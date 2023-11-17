@@ -12,10 +12,6 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
-  - task: UseJavaVersion@1
-    inputs:
-      versionSpec: '11'
-      addToPath: true
 
   - script: |
       ./mvnw clean install
