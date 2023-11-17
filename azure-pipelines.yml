@@ -12,7 +12,8 @@ jobs:
 - job: Build_and_Push
   pool:
     vmImage: 'ubuntu-latest'
-
+   strategy:
+    maxParallel: 1
   steps:
 
   - script: |
