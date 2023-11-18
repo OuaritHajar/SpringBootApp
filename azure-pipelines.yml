@@ -5,12 +5,12 @@ trigger:
       - main
 
 pool:
-  name: 'salma'
+  name: 'DESKTOP-BRLBMDI'
 
 jobs:
 - job: Build_and_Push
   pool:
-    name: 'salma'  
+    name: 'DESKTOP-BRLBMDI'  
   strategy:
     maxParallel: 1
   steps:
