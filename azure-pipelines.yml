@@ -1,0 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+   vmImage: ubuntu-latest
+
+jobs:
+- job: Build_and_Push
+  pool:
+    vmImage: ubuntu-latest
+  strategy:
+    maxParallel: 1
+  steps:
+  - script: |
+      ./mvnw clean install
+    displayName: 'Build Spring Boot App'
+
+  - task: Docker@2
+    displayName: 'Build Docker Image for Spring Boot'
+    inputs:
+      command: 'build'
+      Dockerfile: '$(Build.SourcesDirectory)/dockerfileboot'
+
+  - task: Docker@2
+    displayName: 'Build Docker Image for ReactJs App'
+    inputs:
+      command: 'build'
+      Dockerfile: '$(Build.SourcesDirectory)/src/main/webapp/reactjs/dockerfilejs'
+      includeLatestTag: true
