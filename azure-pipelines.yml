@@ -5,12 +5,12 @@ trigger:
       - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: 'salma'
 
 jobs:
 - job: Build_and_Push
   pool:
-    vmImage: 'ubuntu-latest'
+    name: 'salma'  
   strategy:
     maxParallel: 1
   steps:
