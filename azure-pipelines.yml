@@ -7,15 +7,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-
 jobs:
 - job: Build_and_Push
   pool:
     vmImage: 'ubuntu-latest'
-   strategy:
+  strategy:
     maxParallel: 1
   steps:
-
   - script: |
       ./mvnw clean install
     displayName: 'Build Spring Boot App'
@@ -32,5 +30,3 @@ jobs:
       command: 'build'
       Dockerfile: '$(Build.SourcesDirectory)/src/main/webapp/reactjs/dockerfilejs'
       includeLatestTag: true
-      
-
