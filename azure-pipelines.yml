@@ -8,15 +8,30 @@ trigger:
 
 pool:
   name: pipeline
+  
+jobs:
+- job: BuildBackend
+  displayName: 'Build Backend'
+  steps:
+  - task: UseJavaVersion@1
+    inputs:
+      versionSpec: '11'
+      addToPath: true
+  - script: |
+      cd backend-directory
+      ./mvnw clean install
+    displayName: 'Build Backend'
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+- job: BuildFrontend
+  displayName: 'Build Frontend'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14'
+      addToPath: true
+  - script: |
+      cd 
+      npm install
+      npm run build
+    displayName: 'Build Frontend'
+  
