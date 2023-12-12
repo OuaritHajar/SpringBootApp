@@ -29,7 +29,7 @@ jobs:
       versionSpec: '14'
       addToPath: true
   - script: |
-      cd ./src/main/webapp/reactjs
+      cd src/main/webapp/reactjs
       npm install
       npm run build
     displayName: 'Build Frontend'
