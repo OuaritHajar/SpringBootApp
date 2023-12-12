@@ -16,10 +16,12 @@ jobs:
     inputs:
       versionSpec: '11'
       addToPath: true
-      jdkArchitectureOption: 'x64'  
+      jdkArchitectureOption: 'x64'
+      jdkFile: '/usr/lib/jvm/java-11-openjdk-amd64'
 
   - script: |
-      ./mvnw clean install
+      cd .
+      mvnw clean install
     displayName: 'Build Backend'
 
 - job: BuildFrontend
