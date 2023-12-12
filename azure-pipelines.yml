@@ -6,7 +6,7 @@ trigger:
 - main
 
 pool:
-  name: pipeline
+  name: myAgent
 
 jobs:
 - job: BuildBackend
